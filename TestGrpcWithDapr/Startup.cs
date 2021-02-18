@@ -15,7 +15,6 @@ namespace TestGrpcWithDapr
         {
             services.AddGrpc();
             services.AddSingleton<GreeterService>();
-            //services.AddDaprClient(builder => builder.UseEndpoint("http://localhost:5000"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

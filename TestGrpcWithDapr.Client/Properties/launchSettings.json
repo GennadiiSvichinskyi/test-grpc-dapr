@@ -1,7 +1,8 @@
 {
   "profiles": {
     "TestGrpcWithDapr.Client": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "commandLineArgs": " testGrpcDaprService SayHello noname"
     }
   }
 }

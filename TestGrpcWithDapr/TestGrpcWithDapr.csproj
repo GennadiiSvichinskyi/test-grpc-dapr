@@ -11,21 +11,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Protos\appcallback.proto" />
     <None Remove="Protos\common.proto" />
     <None Remove="Protos\dapr.proto" />
-    <None Remove="Protos\daprclient.proto" />
     <None Remove="Protos\greet.proto" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Grpc.AspNetCore" Version="2.29.0" />
+    <PackageReference Include="Grpc.AspNetCore" Version="2.35.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.8" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Kubernetes.Tools.Targets" Version="1.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
   <ItemGroup>
+    <Protobuf Include="Protos\appcallback.proto" />
     <Protobuf Include="Protos\common\v1\common.proto" />
-    <Protobuf Include="Protos\daprclient.proto" />
     <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
   </ItemGroup>
 

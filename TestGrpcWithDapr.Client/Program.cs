@@ -16,7 +16,9 @@ namespace TestGrpcWithDapr.Client
             {
                 PropertyNameCaseInsensitive = true
             };
-            var client = new DaprClientBuilder().UseJsonSerializationOptions(options).Build();
+            var client = new DaprClientBuilder()
+                .UseJsonSerializationOptions(options)
+                .Build();
 
             var anyReply = await client.InvokeMethodAsync<HelloRequest, HelloReply>(
                 AppId, 

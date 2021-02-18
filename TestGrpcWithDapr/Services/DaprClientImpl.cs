@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Text;
 using System.Threading.Tasks;
+using Dapr.AppCallback.Autogen.Grpc.v1;
 using Dapr.Client.Autogen.Grpc.v1;
 using Google.Protobuf;
+using Google.Protobuf.Collections;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using Microsoft.Extensions.Logging;
@@ -10,11 +12,10 @@ using Newtonsoft.Json;
 
 namespace TestGrpcWithDapr.Services
 {
-    public class DaprClientImpl : DaprClient.DaprClientBase
+    public class DaprClientImpl : AppCallback.AppCallbackBase
     {
         private readonly ILogger<DaprClientImpl> _logger;
         private readonly GreeterService _greeterService;
-
         public DaprClientImpl(ILogger<DaprClientImpl> logger, GreeterService greeterService)
         {
             _logger = logger;
@@ -50,36 +51,9 @@ namespace TestGrpcWithDapr.Services
             }
         }
 
-        public override async Task<GetBindingsSubscriptionsEnvelope> GetBindingsSubscriptions(Empty request,
-            ServerCallContext context)
+        public override async Task<ListTopicSubscriptionsResponse> ListTopicSubscriptions(Empty request, ServerCallContext context)
         {
-            var binding = new GetBindingsSubscriptionsEnvelope();
-            binding.Bindings.Add("test binding");
-
-            return binding;
-
-        }
-
-        public override async Task<GetTopicSubscriptionsEnvelope> GetTopicSubscriptions(Empty request,
-            ServerCallContext context)
-        {
-            var subscription = new GetTopicSubscriptionsEnvelope();
-            subscription.Topics.Add("test topic");
-
-            return subscription;
-        }
-
-        public override async Task<BindingResponseEnvelope> OnBindingEvent(BindingEventEnvelope request,
-            ServerCallContext context)
-        {
-            var bindingResponse = new BindingResponseEnvelope();
-
-            return bindingResponse;
-        }
-
-        public override async Task<Empty> OnTopicEvent(CloudEventEnvelope request, ServerCallContext context)
-        {
-            return new Empty();
+            return new ListTopicSubscriptionsResponse();
         }
     }
 }

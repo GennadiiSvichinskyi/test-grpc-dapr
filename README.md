@@ -17,7 +17,7 @@ Assuming that you have DAPR running open command line and go to the directory wi
 
 ## Run Client locally
 Open a second command line, go to the directory with TestGrpcWithDapr.Client.csproj and run the command  
-`dapr run --app-id testClient --protocol grpc --log-level debug dotnet run testGrpcDaprService SayHello GrpcLover`
+`dapr run --app-id testClient --app-protocol grpc --log-level debug dotnet run testGrpcDaprService SayHello GrpcLover`
 
 ## Notes
 1. Notice tht we have to set a protocol parameter to 'grpc' in order to tell DAPR that we will use GRPC communication.
